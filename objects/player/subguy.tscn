@@ -1,0 +1,163 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5lume8i3on6c"]
+
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_bk2hs"]
+[ext_resource type="Texture2D" uid="uid://c6yivpsmxdpbv" path="res://objects/player/subguy_smaller.png" id="2_t22nx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asva7"]
+resource_local_to_scene = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ln4f"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0jth"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk4a0"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra8db"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyljl"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijiqx"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3adst"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gab"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmmjx"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ch0kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ln4f")
+}],
+"loop": true,
+"name": &"ball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0jth")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk4a0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra8db")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyljl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijiqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3adst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52gab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmmjx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_20lbm"]
+radius = 0.01
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_raukv"]
+size = Vector2(7, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrt2k"]
+size = Vector2(7, 15)
+
+[node name="subguy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_bk2hs")
+WALK_FORCE = 99999
+WALK_MAX_SPEED = 60
+STOP_FORCE = 99999
+JUMP_SPEED = 150
+gravity = 300
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_asva7")
+sprite_frames = SubResource("SpriteFrames_ch0kj")
+animation = &"idle"
+metadata/_edit_lock_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../../../Camera2D")
+metadata/_edit_lock_ = true
+
+[node name="flipstuff" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="gun_marker" type="Marker2D" parent="flipstuff"]
+position = Vector2(6, 1)
+metadata/_edit_lock_ = true
+
+[node name="Area2D_rooms" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 32768
+monitorable = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_rooms"]
+shape = SubResource("CircleShape2D_20lbm")
+metadata/_edit_lock_ = true
+
+[node name="Area2D_normal" type="Area2D" parent="."]
+visible = false
+
+[node name="Area2D_ball" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2DBall" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_raukv")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_vrt2k")
+metadata/_edit_lock_ = true
+
+[connection signal="give_juice" from="." to="." method="_on_give_juice"]
+[connection signal="area_entered" from="Area2D_rooms" to="." method="_on_area_2d_area_entered"]

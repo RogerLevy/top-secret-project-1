@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdorv8r4lpfsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8c83"]
+size = Vector2(24, 8)
+
+[node name="Area2D" type="Area2D" groups=["fountains"]]
+collision_layer = 32768
+collision_mask = 32768
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 4)
+shape = SubResource("RectangleShape2D_l8c83")

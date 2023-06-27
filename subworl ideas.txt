@@ -1,0 +1,105 @@
+shoot bubble doors and they're gone forever
+	only they're not bubbles, 
+items are also gone forever
+
+main character starting entrance: hatch from an egg?
+
+
+a water park area
+
+cybernetic alien rats
+
+
+
+a big crazy rectangular monster
+
+
+enemies and bosses based on past character ideas
+	konoki and mr peninsula
+	earwig
+	bean
+	moth
+	
+
+
+mix ingredients like a barista
+
+
+areas:
+
+Compendia
+Old Bay
+Harmacy
+Shattern
+
+
+
+juice (stamina)
+	most enemies don't hurt you just by touching you, they have to be attacking, or a projectile of some kind
+	at the beginning, your juice doesn't auto-replenish and you have to find sources of juice (killing some enemies is one - farming involves actually feeding and growing these sources)
+	later, you get a slow juice recovery powerup that doesn't recover all the way
+	then you get a faster recovery powerup
+	then you get full and fast revovery - maybe it requires water or something
+
+
+prefer other strategies over killing
+	baiting
+	dispersion
+
+armor (hp)
+	you get 3 heals at every checkpoint
+	if you die, you lose progress.  your save point is loaded.
+	if you die at a boss, you don't lose progress.  you respawn at the entrance to the boss.
+
+
+Z = jump
+X = shoot
+C = use
+A = heal
+
+
+elevator shaft with background and foreground elements - pipes etc - parallax?
+
+
+
+scenario ideas
+	in the beginning, players are likely to immediately waste all their juice, so we give them some free finite sources to learn how that works
+	in the starting room they can replenish infinitely
+
+	getting the 3rd recovery powerup, you have to recover and the game gives you a source to show you how it works
+	
+	an area you get stuck in where sources of juice aren't plentiful and even though you have partial auto-replenish you need to conserve and "save up" for things
+
+	Old Bay: water park area, where you master the liquid mechanics
+
+	Harmacy: an area where you learn how to create compounds with interesting effects, all of which have friendly fire
+		explosive
+		corrosive
+		poison gas
+		
+	Shattern: area with things from Saturn Cycle	
+
+stuff to shoot
+
+	overgrowth
+	eggs
+	hostile creatures
+	ampoules
+	ingredient sources
+	juice sources
+
+
+maybe a laser beam instead of pellets
+
+it'll be really cool as you go from area to area that you have to learn a new variation on the gameplay.  that'll make the game really memorable.
+
+
+lovely goopy animated water
+
+
+the graphics are gonna be low-res but really detailed and colorful.  amiga/dos style.  tracker music.
+
+
+Ancient alien race: The Parch
+
+A boss based off of Mister, whose main move is ,,, (I forget!)
