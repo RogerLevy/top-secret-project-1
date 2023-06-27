@@ -101,12 +101,12 @@ func _physics_process(delta):
 	
 	$flipstuff.scale.x = -1 if $AnimatedSprite2D.flip_h else 1
 	
-	if Input.is_action_pressed("look_up"):
-		$RemoteTransform2D.position.y = -64
-	elif Input.is_action_pressed("look_down"):
-		$RemoteTransform2D.position.y = 64
-	else:
-		$RemoteTransform2D.position.y = 0
+#	if Input.is_action_pressed("look_up"):
+#		$RemoteTransform2D.position.y = -64
+#	elif Input.is_action_pressed("look_down"):
+#		$RemoteTransform2D.position.y = 64
+#	else:
+#		$RemoteTransform2D.position.y = 2
 
 # rooms
 func _on_area_2d_area_entered(area:Area2D):

@@ -122,8 +122,8 @@ animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(0, 3)
 remote_path = NodePath("../../../Camera2D")
-metadata/_edit_lock_ = true
 
 [node name="flipstuff" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
