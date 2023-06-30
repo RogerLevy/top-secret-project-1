@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5lume8i3on6c"]
+[gd_scene load_steps=24 format=3 uid="uid://c5lume8i3on6c"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_bk2hs"]
 [ext_resource type="Texture2D" uid="uid://c6yivpsmxdpbv" path="res://objects/player/subguy_smaller.png" id="2_t22nx"]
@@ -18,9 +18,17 @@ region = Rect2(48, 0, 24, 24)
 atlas = ExtResource("2_t22nx")
 region = Rect2(0, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8j8c"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(24, 24, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ra8db"]
 atlas = ExtResource("2_t22nx")
 region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e28a"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(48, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyljl"]
 atlas = ExtResource("2_t22nx")
@@ -41,6 +49,26 @@ region = Rect2(168, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmmjx"]
 atlas = ExtResource("2_t22nx")
 region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgon8"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od10u"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(96, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ertc7"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(120, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5shb"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(144, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_squql"]
+atlas = ExtResource("2_t22nx")
+region = Rect2(168, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ch0kj"]
 animations = [{
@@ -70,10 +98,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l8j8c")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ra8db")
 }],
 "loop": true,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e28a")
+}],
+"loop": true,
+"name": &"jump_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -94,6 +138,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgon8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od10u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ertc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5shb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_squql")
+}],
+"loop": true,
+"name": &"run_up",
 "speed": 5.0
 }]
 
@@ -130,6 +194,10 @@ metadata/_edit_lock_ = true
 
 [node name="gun_marker" type="Marker2D" parent="flipstuff"]
 position = Vector2(6, 1)
+metadata/_edit_lock_ = true
+
+[node name="gun_marker_up" type="Marker2D" parent="flipstuff"]
+position = Vector2(0, -12)
 metadata/_edit_lock_ = true
 
 [node name="Area2D_rooms" type="Area2D" parent="."]

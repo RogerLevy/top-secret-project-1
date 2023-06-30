@@ -28,28 +28,29 @@ func _ready():
 
 func _physics_process(delta):
 	var walk = WALK_FORCE * (Input.get_axis(&"move_left", &"move_right"))
+	var up = Input.is_action_pressed("up")
 	
 	if is_on_floor():
 		if walk:
-			$AnimatedSprite2D.play("run")
+			$AnimatedSprite2D.play( "run_up" if up else "run" )
 			$AnimatedSprite2D.speed_scale = 4
 			$AnimatedSprite2D.flip_h = sign(walk) < 0	
 		else:
-			$AnimatedSprite2D.play("idle")
+			$AnimatedSprite2D.play( "idle_up" if up else "idle" )
 	else:
 		if walk != 0:
 			$AnimatedSprite2D.flip_h = sign(walk) < 0	
 		
 		if velocity.y > 0:
-			$AnimatedSprite2D.play("jump")
+			$AnimatedSprite2D.play( "jump_up" if up else "jump" )
 		else:
 			if Input.is_action_pressed("jump"):
 				velocity.y += 0.1
 			else:
 				if velocity.y < 0:
 					velocity.y *= .75
-			$AnimatedSprite2D.play("jump")
-	
+			$AnimatedSprite2D.play( "jump_up" if up else "jump" )
+
 	if abs(walk) < WALK_FORCE * 0.2:
 		velocity.x = move_toward(velocity.x, 0, STOP_FORCE * delta)
 	else:
@@ -58,7 +59,7 @@ func _physics_process(delta):
 	velocity.x = clamp(velocity.x, -WALK_MAX_SPEED, WALK_MAX_SPEED)
 	velocity.y += gravity * delta
 	velocity.y = clamp( velocity.y, -9999999999, FALL_MAX_SPEED )
-	move_and_slide()		
+	move_and_slide()
 
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = -JUMP_SPEED
@@ -71,7 +72,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("stand"):
 		ball = false
 		$AnimatedSprite2D.rotation = 0
-		$AnimatedSprite2D.play("idle")
+		$AnimatedSprite2D.play( "idle_up" if up else "idle")
 		$AnimatedSprite2D.position.y = 0
 		$CollisionShape2DBall.disabled = true
 		$CollisionShape2D.disabled = false
@@ -92,11 +93,14 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot") && juice > 0:
 			var bullet:CharacterBody2D = bullet_scene.instantiate()
 			get_tree().current_scene.add_child( bullet )
-			bullet.global_position = find_child("gun_marker").global_position
-			if $AnimatedSprite2D.flip_h:
-				bullet.velocity.x = -5
+			bullet.global_position = find_child( "gun_marker_up" if up else "gun_marker" ).global_position
+			if up:
+				bullet.velocity.y = -5			
 			else:
-				bullet.velocity.x = 5
+				if $AnimatedSprite2D.flip_h:
+					bullet.velocity.x = -5
+				else:
+					bullet.velocity.x = 5
 			juice -= 1
 	
 	$flipstuff.scale.x = -1 if $AnimatedSprite2D.flip_h else 1
